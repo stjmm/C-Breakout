@@ -1,0 +1,3 @@
+src/* linguist-language=C
+
+lib/** linguist-vendored

@@ -9,20 +9,23 @@ set(CMAKE_C_STANDARD_REQUIRED ON)
 set(CMAKE_BUILD_TYPE Debug)
 
 add_subdirectory(lib/glfw)
+add_subdirectory(lib/freetype)
 
 add_library(glad STATIC lib/glad/src/glad.c)
 target_include_directories(glad PUBLIC lib/glad/include)
 
 include_directories(lib/stb)
 include_directories(lib/linmath)
+include_directories(lib/miniaudio)
 
 file(GLOB_RECURSE SRC_FILES CONFIGURE_DEPENDS src/*.c src/*.h)
 
 add_executable(breakout ${SRC_FILES})
 
-target_link_libraries(breakout PRIVATE glad glfw)
+target_link_libraries(breakout PRIVATE glad glfw freetype)
 
 target_include_directories(breakout PRIVATE
     lib/glad/include
     lib/glfw/include
+    lib/freetype/include
 )

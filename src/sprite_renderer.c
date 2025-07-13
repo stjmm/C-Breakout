@@ -15,12 +15,12 @@ static void init_draw_data(SpriteRenderer *renderer) {
         1.0f, 0.0f,  1.0f, 0.0f
     };
 
-    unsigned int VBO;
+    unsigned int vbo;
     glGenVertexArrays(1, &renderer->quad_vao);
-    glGenBuffers(1, &VBO);
+    glGenBuffers(1, &vbo);
 
     glBindVertexArray(renderer->quad_vao);
-    glBindBuffer(GL_ARRAY_BUFFER, VBO);
+    glBindBuffer(GL_ARRAY_BUFFER, vbo);
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
     glEnableVertexAttribArray(0);
@@ -39,7 +39,6 @@ void sprite_renderer_draw(SpriteRenderer *renderer, Texture *texture,
                           vec2 position, vec2 size, float rotate, vec3 color) {
     shader_use(renderer->shader);
 
-    // model matrix
     mat4x4 model;
     mat4x4_identity(model);
 

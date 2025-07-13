@@ -34,8 +34,16 @@ typedef struct {
     GameObject object;
     float radius;
     int stuck;
+    int sticky, pass_through;
     vec2 initial_position, initial_velocity;
 } Ball;
+
+typedef struct {
+    GameObject object;
+    const char *type;
+    float duration;
+    int activated;
+} Powerup;
 
 void game_object_init(GameObject *obj, vec2 pos, vec2 size, Texture *sprite, vec3 color, vec2 velocity);
 void game_object_draw(GameObject *obj, SpriteRenderer *renderer);
@@ -44,7 +52,7 @@ void ball_init(Ball *ball, vec2 pos, float radius, vec2 velocity, Texture *sprit
 void ball_move(Ball *ball, float dt, int window_width, int window_height);
 void ball_reset(Ball *ball);
 
-int aabb(Ball *ball, GameObject *object);
+int aabb(GameObject *object0, GameObject *object);
 Collision aabb_circle(Ball *ball, GameObject *object);
 
 Direction vector_direction(vec2 target);

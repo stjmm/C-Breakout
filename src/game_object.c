@@ -1,8 +1,8 @@
 #include "game_object.h"
 #include "util.h"
 
-#include <stdio.h>
 #include <linmath.h>
+#include <string.h>
 
 void game_object_init(GameObject *obj, vec2 pos, vec2 size, Texture *sprite, vec3 color, vec2 velocity) {
     vec2_dup(obj->position, pos);
@@ -81,12 +81,12 @@ Direction vector_direction(vec2 target) {
     return (Direction)best_match;
 }
 
-int aabb(Ball *ball, GameObject *object) {
-    int collision_x = ball->object.position[0] + ball->object.size[0] >= object->position[0] &&
-        object->position[0] + object->size[0] >= ball->object.position[0];
+int aabb(GameObject *object0, GameObject *object) {
+    int collision_x = object0->position[0] + object0->size[0] >= object->position[0] &&
+        object->position[0] + object->size[0] >= object0->position[0];
 
-    int collision_y = ball->object.position[1] + ball->object.size[1] >= object->position[1] &&
-        object->position[1] + object->size[1] >= ball->object.position[1];
+    int collision_y = object0->position[1] + object0->size[1] >= object->position[1] &&
+        object->position[1] + object->size[1] >= object0->position[1];
 
     return collision_x && collision_y;
 }
