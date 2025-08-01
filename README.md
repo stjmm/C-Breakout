@@ -6,13 +6,9 @@ Written entirely in C.
 Uses original **assets** from LearnOpenGL.com.  
 Dependencies: **GLFW**, **GLAD**, **linmath.h**, **stb_image.h**, **miniaudio.h**.
 
----
-
 ## Features
 
 - Implemented every feature from the original c++ version.
-
----
 
 ## Build Instructions (CMake)
 
@@ -22,8 +18,6 @@ Dependencies: **GLFW**, **GLAD**, **linmath.h**, **stb_image.h**, **miniaudio.h*
 - `cmake` ≥ 3.15
 - `git`
 - OpenGL 3.3-capable GPU
-
----
 
 ```bash
 # Clone the repository and its submodules
